@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zyz.mapper.EmpMapper">
+  <select id="selectEmpBysalename" parameterType="emp" resultType="emp">
+    select * from emp
+    <where>
+        <if test="sal != null">
+          and sal <![CDATA[ <= ]]>#{sal}
+        </if>
+        <if test="ename != null">
+          and ename like concat('%',#{ename},'%')
+        </if>
+    </where>
+  </select>
+
+  <select id="selectEmpByinfo" parameterType="emp" resultType="emp">
+      select * from emp where
+      <choose>
+          <when test="sal != null">
+              sal <![CDATA[ <= ]]>#{sal}
+          </when>
+          <when test="ename != null">
+              and ename like concat('%', #{ename}, '%')
+          </when>
+          <otherwise>
+              deptno=#{deptno}
+          </otherwise>
+      </choose>
+  </select>
+  <insert id="insertEmp" parameterType="emp">
+      insert into emp
+      <trim prefix="(" suffix= ")" suffixOverrides=",">
+          <if test="empno!=null">
+              empno,
+          </if>
+          <if test="ename!=null">
+              ename,
+          </if>
+          <if test="mgr!=null">
+              mgr,
+          </if>
+          <if test="sal!=null">
+              sal,
+          </if>
+          <if test="deptno!=null">
+              deptno,
+          </if>
+      </trim>
+      values
+      <trim prefix="(" suffix= ")" suffixOverrides=",">
+          <if test="empno!=null">
+              #{empno},
+          </if>
+          <if test="ename!=null">
+              #{ename},
+          </if>
+          <if test="mgr!=null">
+              #{mgr},
+          </if>
+          <if test="sal!=null">
+              #{sal},
+          </if>
+          <if test="deptno!=null">
+              #{deptno},
+          </if>
+      </trim>
+  </insert>
+    <update id="updateEmp" parameterType="emp">
+
+        update emp
+        <set>
+            <if test="sal != null">
+                sal=#{sal},
+            </if>
+            <if test="mgr != null">
+                mgr=#{mgr}
+            </if>
+            <if test="ename != null">
+                ename=#{ename}
+            </if>
+        </set>
+        <where>
+            <if test="empno != null">
+                and empno=#{empno}
+            </if>
+            <if test="job != null">
+                and job=#{job}
+            </if>
+        </where>
+    </update>
+
+    <select id="selectEmpByempnos" parameterType="java.util.List" resultType="emp">
+        select * from emp
+        <where>
+            <foreach collection="list" open="(" close=")" item="empno" separator="or">
+                empno=#{empno}
+
+            </foreach>
+        </where>
+    </select>
+
+    <select id="selectEmpByMapinfo" parameterType="java.util.Map" resultType="emp">
+        select * from emp
+        <where>
+            deptno=#{deptnokey}
+            and
+            ename like '%${enamekey}%'
+            and
+            empno in
+            <foreach collection="list" open="(" close=")" item="no" separator=",">
+                #{no}
+
+            </foreach>
+        </where>
+    </select>
+
+
+
+</mapper>

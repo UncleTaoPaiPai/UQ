@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.mybatis.example.BlogMapper">
+
+    <select id="selectAllDept" resultType="dept">
+        select * from dept
+    </select>
+
+    <select id="selectDeptById" parameterType="int" resultType="dept">
+        select * from dept where deptno = #{id}
+    </select>
+
+    <insert id="insertDept" parameterType="dept">
+        insert into dept(DEPTNO,DNAME,LOC) values(#{deptno},#{dname},#{loc})
+    </insert>
+
+    <insert id="insertUseGeneratedKeys" parameterType="dept" useGeneratedKeys="true" keyProperty="deptno">
+        insert into dept(dname,loc) values(#{dname},#{loc})
+    </insert>
+
+    <update id="updDeptById" parameterType="dept">
+        update dept set loc=#{loc} where deptno = #{deptno}
+    </update>
+
+    <delete id="delDeptByid" parameterType="int">
+        delete from dept where deptno = #{id}
+    </delete>
+
+
+
+</mapper>

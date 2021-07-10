@@ -1,0 +1,67 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="simple" targetRuntime="MyBatis3">
+        
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--指向数据库连接-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/hh"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.zyz.pojo"
+                            targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.zyz.mapper"
+                         targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.zyz.mapper"
+                             targetProject=".\src">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+
+
+        <table tableName="users" domainObjectName="Users"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <columnOverride column="id" javaType="Integer" />
+        </table>
+        <table tableName="orders" domainObjectName="Orders"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <columnOverride column="id" javaType="Integer" />
+        </table>
+
+        <table tableName="ordersDetail" domainObjectName="OrdersDetail"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <columnOverride column="id" javaType="Integer" />
+        </table>
+
+        <table tableName="items" domainObjectName="Items"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <columnOverride column="id" javaType="Integer" />
+        </table>
+
+    </context>
+</generatorConfiguration>

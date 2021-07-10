@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.zyz.pojo.User">
+        <constructor-arg name="uid" value="123"/>
+        <constructor-arg name="name" value="LBJ"/>
+        <constructor-arg name="uage" value="22"/>
+        <constructor-arg name="usex" value="男"/>
+    </bean>
+
+<!-- 要求有有参构造方法 -->
+    <bean id="student1" class="com.zyz.pojo.Student">
+        <constructor-arg name="stuid" value="111"/>
+        <constructor-arg name="stuname" value="LCJ"/>
+        <constructor-arg name="stuage" value="15"/>
+        <constructor-arg name="user" ref="user"/>
+    </bean>
+
+<!--    使用属性注入的方式: 要求属性有set方法  -->
+    <bean id="student" class="com.zyz.pojo.Student">
+        <property name="stuid" value="111"/>
+        <property name="stuname" value="Mike"/>
+        <property name="stuage" value="23"/>
+        <property name="user" ref="user"/>
+    </bean>
+
+</beans>

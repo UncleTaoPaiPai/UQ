@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyz.mapper.DeptMapper">
+
+
+    <select id="selectAll" resultType="dept">
+        select * from Dept
+    </select>
+
+    <select id="selectOneByid" parameterType="int" resultType="dept">
+        select * from  Dept where deptno = #{id}
+    </select>
+
+    <insert id="insertDept" parameterType="dept">
+        insert into dept(deptno, dname,loc) values (#{deptno},#{dname},#{loc})
+    </insert>
+
+    <update id="updateDept" parameterType="dept">
+        update dept set dname=#{dname}, loc=#{loc}, where deptno=#{deptno}
+    </update>
+
+    <delete id="deleteDept" parameterType="int">
+        delete from Dept where deptno = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 告诉SpringMVC的注解在哪里 -->
+    <!--  <context:component-scan base-package="com.msb.controller"></context:component-scan>-->
+    <bean name="/lo.do" class="com.zyz.controller.User"/>
+    <!-- 配置标签让SPringMVC注解生效,创建注解解析器. -->
+    <!--   <mvc:annotation-driven/>-->
+
+
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+</beans>

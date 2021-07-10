@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd" default-lazy-init="true">
+
+    <bean id="us" class="com.zyz.pojo.User"/>
+
+
+    <!-- 使用有参构造，创建对象   -->
+    <bean id="us2" class="com.zyz.pojo.User">
+        <constructor-arg name="uid" value="222"/>
+        <constructor-arg name="uname" value="Mike"/>
+        <constructor-arg name="uage" value="88"/>
+        <constructor-arg name="usex" value="男"/>
+    </bean>
+
+    <!--
+        使用工厂模式，创建对象
+              1.创建工厂对象
+              2.根据工厂对象，创建user对象
+     -->
+
+
+    <!-- 使用静态工厂模式   -->
+
+
+    <!-- 使用实例工厂类+有参    -->
+    <bean id="factory" class="com.zyz.factory.UsersFactory"/>
+    <bean id="us5" factory-bean="factory" factory-method="getInstance">
+        <constructor-arg name="user" ref="us"></constructor-arg>
+    </bean>
+
+    <bean id="stu" class="com.zyz.pojo.Student" init-method="stuinit"/>
+
+
+
+</beans>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyz.mapper.EmpMapper">
+
+    <select id="selectEmpBysalname" parameterType="emp" resultType="emp">
+        <!--    select * from emp where sal>#{sal}-->
+        <!--&#45;&#45;    如果员工姓名有，则跟着where后面，反之只查询sal-->
+        <!--    <if test="ename != null">-->
+        <!--      and ename=#{ename}-->
+        <!--    </if>-->
+
+        select * from emp
+        <where>
+            <if test="ename != null">
+                and ename like '%${ename}%'
+            </if>
+            <if test="sal != null" >
+
+                and sal <![CDATA[<]]>#{sal}
+            </if>
+            <if test="deptno != null">
+                and deptno =#{deptno}
+            </if>
+            <if test="empno != null">
+                and empno =#{empno}
+            </if>
+        </where>
+
+
+    </select>
+
+    <select id="selectEmpByinfo" parameterType="emp" resultType="emp">
+
+        select * from emp where
+        <choose>
+            <when test="sal !=null ">
+                sal <![CDATA[ <= ]]>#{sal}
+            </when>
+            <when test="ename != null">
+                ename like concat('%',#{ename},'%')
+            </when>
+            <otherwise>
+                deptno=#{deptno}
+            </otherwise>
+        </choose>
+
+    </select>
+
+    <insert id="insertEmp" parameterType="emp">
+        --        insert into 表名(列名，列名，列名) values(值，值，值)
+        insert into emp
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="empno != null">
+                empno,
+            </if>
+
+            <if test="ename != null">
+                ename,
+            </if>
+            <if test="mgr != null">
+                mgr,
+            </if>
+            <if test="sal != null">
+                sal,
+            </if>
+            <if test="deptno != null">
+                deptno,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="empno != null">
+                #{empno},
+            </if>
+            <if test="ename != null">
+                #{ename},
+            </if>
+            <if test="mgr != null">
+                #{mgr},
+            </if>
+            <if test="sal != null">
+                #{sal},
+            </if>
+            <if test="deptno != null">
+                #{deptno},
+            </if>
+        </trim>
+
+    </insert>
+
+
+    <update id="updateEmp" parameterType="emp">
+        --        update emp set 列1=值1, 列2=值2, 列3=值3 where 列1=值1 and 列2=值2
+        update emp
+        <set>
+            <if test="sal != null">
+                sal = #{sal},
+            </if>
+            <if test="mgr != null">
+                mgr=#{mgr},
+            </if>
+            <if test="ename != null">
+                ename =#{ename},
+            </if>
+        </set>
+        <where>
+            <if test="empno != null">
+                and empno =#{empno}
+            </if>
+            <if test="job != null">
+                and job=#{job}
+            </if>
+        </where>
+
+    </update>
+
+    <select id="selectEmpByempnos" parameterType="java.util.List" resultType="emp">
+        select * from emp where empno in
+
+            <foreach collection="list" open="(" close=")" item="empno" separator=",">
+                #{empno}
+            </foreach>
+
+    </select>
+
+
+
+
+</mapper>
