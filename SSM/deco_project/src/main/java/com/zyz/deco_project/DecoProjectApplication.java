@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DecoProjectApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(DecoProjectApplication.class, args);
 	}
 
