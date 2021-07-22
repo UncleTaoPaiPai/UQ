@@ -8,14 +8,11 @@ import java.util.Scanner;
  * @Version : 1.0
  */
 public class Test {
-    public static final int num =10;
+
 
     public static void main(String[] args) {
-        Person person = new Person();
-        System.out.println(person.width);
-        System.out.println(person.height);
-//        num = 100;
-        System.out.println(num);
+        pay.getOrderAmount();
+
     }
 
 

@@ -4,10 +4,9 @@ import com.zyz.domain.User;
 import com.zyz.service.UserService;
 import com.zyz.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Auther : YongggzHi
@@ -33,6 +32,11 @@ public class UserController {
         String token = userService.login(user.getUsername(), user.getPwd());
 
         return token != null ? JsonData.buildSuccess(token):JsonData.buildError("密码错误");
+    }
+
+    @GetMapping("list_user")
+    public JsonData listUser(){
+        return JsonData.buildSuccess(userService.listUser());
     }
 
 }

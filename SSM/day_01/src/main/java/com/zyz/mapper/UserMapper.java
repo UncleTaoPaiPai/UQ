@@ -3,7 +3,9 @@ package com.zyz.mapper;
 import com.zyz.domain.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,5 +35,11 @@ public class UserMapper {
             return user;
         }
        return null;
+    }
+
+    public List<User> listUser() {
+        List<User> list = new ArrayList<>();
+        list.addAll(userMap.values());
+        return list;
     }
 }

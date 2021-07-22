@@ -1,5 +1,9 @@
 package com.zyz.service;
 
+import com.zyz.domain.User;
+
+import java.util.List;
+
 /**
  * @Auther : YongggzHi
  * @Date : 2021/7/17 - 10:26
@@ -9,4 +13,6 @@ package com.zyz.service;
 public interface UserService {
 
     String login(String username, String pwd);
+
+    List<User> listUser();
 }

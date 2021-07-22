@@ -6,7 +6,7 @@
  *
  *      Person --- 类
  */
-public class Person {
+public abstract class Person {
 
     int age;
     String name;
@@ -14,16 +14,17 @@ public class Person {
     double width;
 
     public Person() {
+        System.out.println("kf");
     }
 
-    public Person(int age, String name, double height, double width) {
-        this.age = age;
-        this.name = name;
-        this.height = height;
-        this.width = width;
-    }
+//    public Person(int age, String name, double height, double width) {
+//        this.age = age;
+//        this.name = name;
+//        this.height = height;
+//        this.width = width;
+//    }
 
-    public void eat() {
+    public  void eat() {
         System.out.println("我喜欢吃饭");
     }
 
