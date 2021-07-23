@@ -15,7 +15,7 @@ import java.io.PrintWriter;
  * @Version : 1.0
  */
 
-@WebServlet(name = "login",urlPatterns = {"/user1","/user2","/test"})
+@WebServlet(name = "MyServlet",urlPatterns = {"/user/login"})
 public class MyServlet extends HttpServlet {
 
     @Override
@@ -28,8 +28,9 @@ public class MyServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=utf-8");
-        PrintWriter writer = resp.getWriter();
-        writer.write("<div>zhouyz</div>");
+        String username = req.getParameter("username");
+        String pwd = req.getParameter("pwd");
+        System.out.println("你的名字：" + username + "你的密码:" + pwd);
+
     }
 }
