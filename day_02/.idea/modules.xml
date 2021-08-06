@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JSP.iml" filepath="$PROJECT_DIR$/JSP.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UQ.iml" filepath="$PROJECT_DIR$/UQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/day_02.iml" filepath="$PROJECT_DIR$/day_02.iml" />
     </modules>
   </component>
