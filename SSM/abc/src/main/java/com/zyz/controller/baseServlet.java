@@ -10,13 +10,12 @@ import java.lang.reflect.Method;
 
 /**
  * @Auther : YongggzHi
- * @Date : 2021/8/5 - 19:37
+ * @Date : 2021/8/6 - 14:26
  * @Description : IntelliJ IDEA
  * @Version : 1.0
  */
-
-@WebServlet(name = "BaseServlet")
-public class BaseServlet extends HttpServlet {
+@WebServlet(name = "deptServlet")
+public class baseServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,6 +31,8 @@ public class BaseServlet extends HttpServlet {
             }catch (Exception e){
                 e.printStackTrace();
             }
+
         }
     }
 }
+
