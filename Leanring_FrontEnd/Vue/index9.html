@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .bg{
+            background-color: yellow;
+        }
+        .bg_b{
+            background-color: slateblue;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div :class="bg_red" @click="change">{{name}}</div>
+    </div>
+    <script>
+        Vue.config.production = false;
+        new Vue({
+            el:'#app',
+            data:{
+                name:'小滴课堂',
+                bg_red: 'bg',
+                
+            },
+            methods:{
+                change(){
+                    this.bg_red='bg_b';
+                },
+            }
+        });
+    </script>
+</body>
+</html>
