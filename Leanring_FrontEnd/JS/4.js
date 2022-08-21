@@ -15,7 +15,16 @@ console.log(list);
 
 //在排好数组里，按照大小插入数据
 
+console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
+
+for(var x =0;x<=5;x++) {
+
+    for(var y=0;y<=x;y++) {
+        document.write("*");
+    }
+    document.write('<br/>')
+}
 
 
 
